@@ -6,18 +6,20 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.Map;
+import java.util.EnumMap;
 
 @Component
 public class FileWriter {
 
     @Autowired
     ApplicationContext applicationContext;
-    private static Map<DataType, Writer> writers;
+
+    private static EnumMap<DataType, Writer> writers;
 
     @PostConstruct
     void init() {
-        writers = Map.of(DataType.TEXT, applicationContext.getBean(TextWriter.class), DataType.JSON, applicationContext.getBean(JSONWriter.class));
+        writers.put(DataType.TEXT, applicationContext.getBean(TextWriter.class));
+        writers.put(DataType.JSON, applicationContext.getBean(JSONWriter.class));
     }
 
     public static void writeToFile(DataType dataType, Object object) {
