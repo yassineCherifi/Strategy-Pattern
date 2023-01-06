@@ -14,7 +14,7 @@ public class FileWriter {
     @Autowired
     ApplicationContext applicationContext;
 
-    private static EnumMap<DataType, Writer> writers;
+    private static final EnumMap<DataType, Writer> writers = new EnumMap<>(DataType.class);
 
     @PostConstruct
     void init() {
