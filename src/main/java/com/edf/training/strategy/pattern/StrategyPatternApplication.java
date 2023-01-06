@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class StrategyPatternApplication {
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) throws Exception {
 
         SpringApplication.run(StrategyPatternApplication.class, args);
 
